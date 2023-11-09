@@ -20,7 +20,7 @@ type Repository struct {
 	Fork        bool   `json:"fork"`
 }
 
-const version = "2.2"
+const version = "2.3"
 
 //	func splitString(input string, chunkSize int) []string {
 //		var chunks []string
@@ -96,7 +96,7 @@ func main() {
 		}
 	}
 	cui.ClearLines(5, 20)
-	cui.XyPrintf(4, 1, 0, "[√] Repositorios de %s\n actualizados", GITHUB_USERNAME)
+	cui.XyPrintf(4, 1, 0, "[√] Repositorios de %s actualizados\n", GITHUB_USERNAME)
 }
 
 func removeWorkflows(user, repo string) {
