@@ -20,21 +20,23 @@ type Repository struct {
 	Fork        bool   `json:"fork"`
 }
 
-func splitString(input string, chunkSize int) []string {
-	var chunks []string
-	for i := 0; i < len(input); i += chunkSize {
-		end := i + chunkSize
-		if end > len(input) {
-			end = len(input)
-		}
-		chunks = append(chunks, input[i:end])
-	}
-	return chunks
-}
+const version = "2.2"
+
+//	func splitString(input string, chunkSize int) []string {
+//		var chunks []string
+//		for i := 0; i < len(input); i += chunkSize {
+//			end := i + chunkSize
+//			if end > len(input) {
+//				end = len(input)
+//			}
+//			chunks = append(chunks, input[i:end])
+//		}
+//		return chunks
+//	}
 func main() {
 	cui.ClearScreen()
 	cui.Box(1, 1, 3, 80)
-	cui.XyPrintf(2, 2, 78, "%ssync-repos %s%s", cui.INVERTED, "2.1", cui.NORMAL)
+	cui.XyPrintf(2, 2, 78, "%ssync-repos %s%s", cui.INVERTED, version, cui.NORMAL)
 	if len(os.Args) < 2 {
 		cui.XyPrintf(4, 1, 0, "%sSyncroniza repositorios forkeados de Github", cui.NORMAL)
 		cui.XyPrintf(5, 3, 0, "%sModo de uso\n", cui.NORMAL)
@@ -93,7 +95,8 @@ func main() {
 			morePages = false
 		}
 	}
-	cui.XyPrintf(4, 1, 0, "[√]")
+	cui.ClearLines(5, 20)
+	cui.XyPrintf(4, 1, 0, "[√] Repositorios de %s\n actualizados", GITHUB_USERNAME)
 }
 
 func removeWorkflows(user, repo string) {
