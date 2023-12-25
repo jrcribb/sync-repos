@@ -20,7 +20,7 @@ type Repository struct {
 	Fork        bool   `json:"fork"`
 }
 
-const version = "2.3"
+var version string
 
 //	func splitString(input string, chunkSize int) []string {
 //		var chunks []string
